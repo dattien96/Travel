@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.weather.ItemForecastViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_8"
+        android:paddingTop="@dimen/dp_8">
+
+        <LinearLayout
+            android:id="@+id/itemForecastContain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.forecastWrap.getNameOfDayInWeek()}"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_18" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.mCurrentDay}"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/itemMainImg"
+            imageUrl="@{viewModel.weather.getIconUrl()}"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_toRightOf="@+id/itemForecastContain"
+            android:layout_toLeftOf="@+id/itemTempMax"
+            android:src="@drawable/dark_weather_snow_ic" />
+
+        <TextView
+            android:id="@+id/itemTempMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_25"
+            android:layout_toLeftOf="@+id/itemTempMin"
+            android:text="@{viewModel.forecastWrap.main.getStringMaxTemp()}"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_18" />
+
+        <TextView
+            android:id="@+id/itemTempMin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@{viewModel.forecastWrap.main.getStringMinTemp()}"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="@dimen/sp_18" />
+    </RelativeLayout>
+</layout>

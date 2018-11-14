@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.detailsplace.ItemCommentViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:onClick="@{() -> viewModel.onUserItemClick()}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                app:civ_border_color="@color/colorPrimaryDark"
+                android:src="@drawable/no_image"
+                android:id="@+id/img_user_avatar"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:textSize="@dimen/sp_15"
+                android:text="@{viewModel.user.name}" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@{viewModel.comment.cmtContent}"
+            android:textSize="@dimen/sp_15" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:gravity="end"
+            android:text="@{viewModel.comment.getDateConvertString()}"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/sp_13" />
+
+        <View
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/white_e2e2e9"
+            android:layout_marginBottom="@dimen/dp_8"/>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.city.utilFragment.contain.ContainFrgViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:onClick="@{() -> viewModel.onReloadClick()}"
+            android:visibility="@{safeUnbox(viewModel.isPermissionGranded) ?View.GONE :View.VISIBLE}"
+            android:id="@+id/img_reload"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/reset_filled" />
+
+        <TextView
+            android:visibility="@{safeUnbox(viewModel.isPermissionGranded) ?View.GONE :View.VISIBLE}"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_below="@id/img_reload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reload"/>
+
+        <FrameLayout
+            android:visibility="@{safeUnbox(viewModel.isPermissionGranded) ?View.VISIBLE :View.GONE}"
+            android:id="@+id/frame_util_frg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></FrameLayout>
+    </RelativeLayout>
+
+</layout>

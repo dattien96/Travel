@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.lovedplace.ItemLovedPlaceViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:onClick="@{() -> viewModel.onItemPlaceClick()}"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_place"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150"
+            android:scaleType="fitXY"
+            app:imageUrl="@{viewModel.lovedPlace.placeImageUrl}"
+            app:progressBar="@{probar}"
+            android:src="@drawable/no_image" />
+
+        <ProgressBar
+            android:id="@+id/probar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150"
+            android:padding="@dimen/dp_50"/>
+
+        <TextView
+            android:layout_below="@id/img_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.lovedPlace.placeName}"/>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.detailsmap.MapViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.gms.maps.MapView
+            android:visibility="@{safeUnbox(viewModel.isVisibleMap) ?View.VISIBLE :View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:drawDirect="@{viewModel.lineOptions}"
+            app:initMapDetails="@{viewModel.currentPlace}"
+            app:mapEvent="@{viewModel}"
+            app:mapLeg="@{viewModel.legDirect}" />
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map_step_details"
+            android:visibility="@{safeUnbox(viewModel.isVisibleMapSteps) ?View.VISIBLE :View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:initMapSteps="@{true}"
+            app:location="@{viewModel.currentLocation}"
+            app:curLeg="@{viewModel.curLegDirect}"
+            app:curLineOptions="@{viewModel.curLineOptions}"
+            app:placeDestination="@{viewModel.currentPlace}"
+            app:event="@{viewModel}"
+            />
+
+        <LinearLayout
+            android:visibility="@{safeUnbox(viewModel.isVisibleLocationContain) ?View.VISIBLE :View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_gray_border"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="8dp"
+                    android:src="@drawable/cur_location_dot" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/imgShowDistanceCurLoca"
+                    android:ellipsize="marquee"
+                    android:gravity="center"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:text="@{viewModel.mCurrentLocationString}"
+                    android:textSize="12sp"
+                    app:viewSelected="@{true}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="8dp"
+                    android:src="@drawable/flag_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/imgShowDistanceAddLoca"
+                    android:ellipsize="marquee"
+                    android:gravity="center"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:text="@{viewModel.placeInfor.name}"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:viewSelected="@{true}" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/viewdiv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_above="@id/rlContain"
+            android:background="@android:color/darker_gray"
+            android:visibility="@{safeUnbox(viewModel.isVisibleListStep) ?View.VISIBLE :View.GONE}" />
+
+        <ImageView
+            android:id="@+id/imgCaptureCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/rlContain"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:onClick="@{() -> viewModel.onCameraCapture()}"
+            android:src="@drawable/create_photo_btn"
+            android:visibility="@{safeUnbox(viewModel.isVisibleDirection) ?View.VISIBLE :View.GONE}" />
+
+        <RelativeLayout
+            android:id="@+id/rlContain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txtStartDirect"
+            android:background="@android:color/white"
+            android:padding="@dimen/dp_8"
+            android:visibility="@{safeUnbox(viewModel.isVisibleDirection) ?View.VISIBLE :View.GONE}">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/imgStepList">
+
+                <TextView
+                    android:id="@+id/txtDurationTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.mDurationTime}"
+                    android:textSize="@dimen/sp_20" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/txtDurationTime"
+                    android:text="@{viewModel.mCurrentDistance}"
+                    android:textSize="@dimen/sp_20" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtDurationTime"
+                    android:text="@string/fast_road"
+                    android:visibility="@{safeUnbox(viewModel.isFastRoad) ?View.VISIBLE :View.GONE}" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/imgStepList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_5"
+                android:onClick="@{() -> viewModel.onShowListStepClick()}"
+                android:src="@drawable/icons8_menu_24" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtStartDirect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/shape_light_border_has_bg"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.startDetailsDirection()}"
+            android:padding="@dimen/dp_15"
+            android:text="@string/start"
+            android:textColor="@color/pink_FE007E"
+            android:textSize="@dimen/sp_20"
+            android:visibility="@{safeUnbox(viewModel.isVisibleDirection) ?View.VISIBLE :View.GONE}"></TextView>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/viewdiv"
+            android:background="@android:color/white"
+            android:padding="@dimen/dp_8"
+            android:visibility="@{safeUnbox(viewModel.isVisibleListStep) ?View.VISIBLE :View.GONE}"
+            app:layoutManager="LinearLayoutManager"
+            app:recyclerAdapter="@{viewModel.directionAdapter}"></android.support.v7.widget.RecyclerView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shape_circle"
+            android:onClick="@{()->viewModel.onCloseDetailsStep()}"
+            android:src="@drawable/pink_close_btn"
+            android:visibility="@{safeUnbox(viewModel.isVisibleDetailsStep) ?View.VISIBLE :View.GONE}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pink_FE007E"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:visibility="@{safeUnbox(viewModel.isVisibleDetailsStep) ?View.VISIBLE :View.GONE}">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewModel.mCurrentStepName}"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_25" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewModel.mCurrentStepDescription}"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:visibility="@{safeUnbox(viewModel.isLocationTurnOn) ?View.GONE :View.VISIBLE}" >
+
+            <TextView
+                android:onClick="@{() -> viewModel.onTurnOnLocationClick()}"
+                android:layout_centerInParent="true"
+                android:padding="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white_e2e2e9"
+                android:text="You Must Turn On Location"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>
+

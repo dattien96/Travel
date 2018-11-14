@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.weather.ItemTodayWeatherViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp_15"
+        android:paddingRight="@dimen/dp_15"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.forecastWrap.getStringTime()}"
+            android:textSize="@dimen/sp_12"
+            android:textColor="@android:color/white"/>
+
+        <ImageView
+            imageUrl="@{viewModel.weather.getIconUrl()}"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:src="@drawable/dark_weather_snow_ic" />
+
+        <TextView
+            android:textSize="@dimen/sp_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@{viewModel.forecastWrap.main.getStringTemp()}"
+            android:textColor="@android:color/white"
+             />
+    </LinearLayout>
+</layout>

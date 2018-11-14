@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.lovedplace.LovedPlaceViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:onClick="@{() -> viewModel.onBackClick()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back_pink" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/loved_place"
+                android:textSize="@dimen/sp_18"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
+            app:layoutManager="GridLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:recyclerAdapter="@{viewModel.lovedPlaceAdapter}"
+            app:scroll="@{false}"
+            app:spanCount="2"></android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</layout>

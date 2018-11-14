@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".screen.camera.CameraActivity">
+
+
+    <FrameLayout
+        android:id="@+id/camera_preview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/camera_space"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutOfListImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="2dp">
+
+        <RelativeLayout
+            android:id="@+id/layoutOfLongClick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white_e2e2e9"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imgShareOfLongClickImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/topic_share_ic_pink" />
+
+            <TextView
+                android:id="@+id/txtNumberOfSelectImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/imgShareOfLongClickImage"
+                android:text="1" />
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/gridListImageCamera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white_e2e2e9"
+            android:padding="8dp">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_capture"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/create_camera_ic" />
+
+    <ImageView
+        android:id="@+id/btnShowListImageOfCamera"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/shape_radius"
+        android:scaleType="fitXY" />
+</RelativeLayout>

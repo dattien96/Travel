@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.search.ItemPlaceSearchViewModel" />
+    </data>
+
+    <LinearLayout
+        android:onClick="@{() -> viewModel.onPlaceClick()}"
+        android:padding="@dimen/dp_15"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            app:imageResource="@{viewModel.place.getPlaceIcon()}"
+            android:src="@drawable/default_attractions"/>
+
+        <TextView
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_18"
+            android:text="@{viewModel.place.placeName}"/>
+    </LinearLayout>
+</layout>

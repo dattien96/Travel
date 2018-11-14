@@ -1,0 +1,86 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.example.dattienbkhn.travel"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    realm {
+        syncEnabled = true;
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.google.android.gms:play-services:11.8.0'
+    implementation 'com.google.maps.android:android-maps-utils:0.5'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    //room version
+    implementation 'android.arch.persistence.room:runtime:1.0.0'
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    implementation 'android.arch.persistence.room:rxjava2:1.0.0'
+    //guava
+    implementation 'com.google.guava:guava:18.0'
+    //liveData
+    // RxAndroid
+    // https://github.com/ReactiveX/RxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    // Retrofit http://square.github.io/retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    // GSON body parser
+    implementation 'com.google.code.gson:gson:2.7'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    //circle indicator
+    implementation 'me.relex:circleindicator:1.2.2@aar'
+    //rating bar
+    implementation 'com.github.fuzz-productions:RatingBar:1.0.3'
+    //android design
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:cardview-v7:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    //facebook
+    implementation 'com.facebook.android:facebook-login:[4,5)'
+    //google api
+    implementation 'com.google.android.gms:play-services-auth:11.8.0'
+    //image crop
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.6.+'
+    //libstreaming
+    implementation 'com.github.ar-android:libstreaming:1.0.0'
+    implementation 'com.android.support:design:27.1.0'
+
+    //stream sdk
+    compile project(path: ':liveVideoBroadcasterSDK')
+    compile 'com.google.android.exoplayer:exoplayer:r2.3.1'
+
+    //socket io
+    compile 'com.github.nkzawa:socket.io-client:0.3.0'
+}

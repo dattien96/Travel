@@ -1,0 +1,168 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Back Khoa Travel</string>
+
+    <string name="next">Next</string>
+    <string name="action_yes">Yes</string>
+    <string name="action_no">No</string>
+    <string name="OK">Ok</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="done">Done</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="facebook_app_id">346787255831855</string>
+    <string name="fb_login_protocol_scheme">fb346787255831855</string>
+
+
+    //comment act
+    <string name="write_review">Write a review</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
+
+    //filter act
+    <string name="filter">FILTER</string>
+    <string name="save_filter">SAVE</string>
+    <string name="sort">Sort</string>
+    <string name="place_type">Place Type</string>
+    <string name="see_type">See and Play</string>
+    <string name="foodies_type">Foodies</string>
+    <string name="drink_type">Drink</string>
+    <string name="stay_type">Stay</string>
+
+    //main act
+    <string name="home">Home</string>
+    <string name="me">Me</string>
+    <string name="favorite">My Favorite</string>
+
+    //map
+    <string name="start">START</string>
+    <string name="fast_road">Fast Road</string>
+
+    //place details
+    <string name="love">Loves</string>
+    <string name="review">Reviews</string>
+    <string name="save_place">Save</string>
+    <string name="rate_place">Rate this place</string>
+    <string name="share">Share</string>
+    <string name="address">Adress</string>
+    <string name="phone">Phone</string>
+    <string name="open_hour">Open Hour</string>
+    <string name="attraction">Attraction</string>
+    <string name="cuisine">Cuisine</string>
+    <string name="more_cmt">View more comments</string>
+
+    //register
+    <string name="create_acc">Create Your Account</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="passwd">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="acc_already">Have an Acccount ?</string>
+
+    //search place
+    <string name="search_hind">Search City Or Place</string>
+    <string name="search_filter">Filter by Region</string>
+    <string name="america">America</string>
+    <string name="asia">Asia</string>
+    <string name="africa">Africa</string>
+    <string name="europe">Europe</string>
+    <string name="caribbean">Caribbean</string>
+    <string name="australia">Australia, Pacific</string>
+
+    //search friend
+    <string name="search_friend_hind">Search Friends</string>
+
+    //setting
+    <string name="setting">Setting</string>
+    <string name="account">Account</string>
+    <string name="log_out">Log Out</string>
+    <string name="my_profile">My Profile</string>
+
+
+    //weather
+    <string name="forecast">Forecast</string>
+
+    //explore map
+    <string name="filter_map">Filter</string>
+
+    //util map
+    <string name="reload">We can not continues without your permisson granded</string>
+
+    //frg city home
+    <string name="explore_city">Explore City</string>
+    <string name="thing_to_do">Things to do</string>
+    <string name="see_more">See More >></string>
+    <string name="res_ideas">Restaurant ideas</string>
+    <string name="good_stay">Good Stay</string>
+    <string name="entertainment">Entertainment</string>
+
+
+    //frg main
+    <string name="popular_city">Popular In Your City</string>
+    <string name="main_search">Explore your world</string>
+    <string name="around_city">Around Top Cities</string>
+
+    //frg me
+    <string name="sign_in_title">Sign in for the best experience</string>
+    <string name="fb">Facebook</string>
+    <string name="gg">Google</string>
+    <string name="personal">Personal</string>
+    <string name="friends">Friends</string>
+    <string name="friends_more">View more friends </string>
+
+
+    //profile act
+    <string name="profile">Profile modify</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_username">Username</string>
+    <string name="profile_passwd">Password</string>
+    <string name="profile_passwd_star">******</string>
+    <string name="profile_touch">Touch to modify</string>
+    <string name="profile_gender">Gender</string>
+    <string name="profile_birthday">Birthday</string>
+    <string name="profile_address">Address</string>
+
+    //love place
+    <string name="loved_place">Loved Place</string>
+
+    //stream
+    <string name="video">Video</string>
+
+    <string name="audio">Audio</string>
+
+    <string name="text">Text</string>
+
+    <string name="retry">Retry</string>
+
+    <string name="selection_disabled">Disabled</string>
+
+    <string name="selection_default">Default</string>
+
+    <string name="selection_default_none">Default (none)</string>
+
+    <string name="unexpected_intent_action">Unexpected intent action: <xliff:g id="action">%1$s</xliff:g></string>
+
+    <string name="enable_random_adaptation">Enable random adaptation</string>
+
+    <string name="error_drm_not_supported">Protected content not supported on API levels below 18</string>
+
+    <string name="error_drm_unsupported_scheme">This device does not support the required DRM scheme</string>
+
+    <string name="error_drm_unknown">An unknown DRM error occurred</string>
+
+    <string name="error_no_decoder">This device does not provide a decoder for <xliff:g id="mime_type">%1$s</xliff:g></string>
+
+    <string name="error_no_secure_decoder">This device does not provide a secure decoder for <xliff:g id="mime_type">%1$s</xliff:g></string>
+
+    <string name="error_querying_decoders">Unable to query device decoders</string>
+
+    <string name="error_instantiating_decoder">Unable to instantiate decoder <xliff:g id="decoder_name">%1$s</xliff:g></string>
+
+    <string name="error_unsupported_video">Media includes video tracks, but none are playable by this device</string>
+
+    <string name="error_unsupported_audio">Media includes audio tracks, but none are playable by this device</string>
+
+    <string name="storage_permission_denied">Permission to access storage was denied</string>
+
+    <string name="sample_list_load_error">One or more sample lists failed to load</string>
+    <string name="stream_not_started">Failed to start. Please check server url and security credentials.</string>
+</resources>

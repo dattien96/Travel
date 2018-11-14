@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.main.MainViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/contentFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/view_div" />
+
+        <View
+            android:id="@+id/view_div"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/white_e2e2e9"
+            android:layout_above="@+id/tab_container"/>
+
+        <LinearLayout
+            android:id="@+id/tab_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_5">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onHomeFrgClick()}">
+
+                <ImageView
+                    app:imgSelected="@{safeUnbox(viewModel.isVisibleHomeTabIcon)}"
+                    android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_above="@+id/tv_home"
+                    android:src="@drawable/main_home_selector" />
+
+                <TextView
+                    android:id="@+id/tv_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="@string/home"
+                    android:visibility="@{safeUnbox(viewModel.isVisibleHomeTabIcon)? View.VISIBLE : View.GONE}"
+                    android:textColor="@color/pink_FE007E" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onFavoriteFrgClick()}">
+
+                <ImageView
+                    app:imgSelected="@{safeUnbox(viewModel.isVisibleFavoriteTabIcon)}"
+                    android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_above="@+id/tv_favorite"
+                    android:src="@drawable/main_favorite_selector" />
+
+                <TextView
+                    android:id="@+id/tv_favorite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="@string/favorite"
+                    android:visibility="@{safeUnbox(viewModel.isVisibleFavoriteTabIcon)? View.VISIBLE : View.GONE}"
+                    android:textColor="@color/pink_FE007E" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onMeFrgClick()}">
+
+                <ImageView
+                    app:imgSelected="@{safeUnbox(viewModel.isVisibleMeTabIcon)}"
+                    android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_above="@+id/tv_me"
+                    android:src="@drawable/main_me_selector" />
+
+                <TextView
+                    android:id="@+id/tv_me"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="@string/me"
+                    android:visibility="@{safeUnbox(viewModel.isVisibleMeTabIcon)? View.VISIBLE : View.GONE}"
+                    android:textColor="@color/pink_FE007E" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>
+

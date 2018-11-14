@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.main.mainfragment.ItemFamousPlaceCountryViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="@dimen/dp_230"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:elevation="@dimen/dp_8"
+        app:cardCornerRadius="@dimen/dp_7"
+        android:onClick="@{() -> viewModel.onPlaceClick()}">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/item_rv"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_150"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/empty_photo"
+                app:progressBar="@{progressBar}"
+                app:imageUrl="@{viewModel.place.placeImageUrl}" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:padding="@dimen/dp_80"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_150" />
+
+            <TextView
+                android:id="@+id/item_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_rv"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="@{viewModel.place.typeDetails}"
+                android:textColor="@android:color/holo_blue_dark" />
+
+            <TextView
+                android:id="@+id/item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_category"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:text="@{viewModel.place.placeName}"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_below="@+id/item_title"
+                android:orientation="horizontal">
+
+                <com.fuzzproductions.ratingbar.RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:minAllowedStars="0"
+                    app:numStars="5"
+                    app:starSize="@dimen/dp_15"
+                    app:rating="@{viewModel.place.placeRate}"
+                    app:starMargin="10dp"
+                    app:isIndicator="true"
+                    app:emptyDrawable="@drawable/topic5_star_empty"
+                    app:filledDrawable="@drawable/topic5_star_full_pink"
+
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@{viewModel.place.stringViewOfPlace()}"
+                    android:textColor="@android:color/darker_gray" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.city.utilFragment.UtilFrgViewModel" />
+
+        <import type="android.view.View"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.gms.maps.MapView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:initMapUtil="@{viewModel.mNearyByPlaces}"
+            app:typeIcon="@{viewModel.mTypeIcon}"
+            app:location="@{viewModel.currentLocation}"
+            app:mapEvent="@{viewModel}" />
+
+        <LinearLayout
+            android:visibility="@{safeUnbox(viewModel.isLocationTurnOn) ?View.VISIBLE :View.GONE}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:orientation="vertical">
+
+            <ImageView
+                android:onClick="@{() -> viewModel.onTypeRestaurantClick()}"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/res_type_selector"
+                app:imgSelected="@{safeUnbox(viewModel.isResType)}" />
+
+            <ImageView
+                android:onClick="@{() -> viewModel.onPlaceTypeHotelClick()}"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hotel_type_selector"
+                app:imgSelected="@{safeUnbox(viewModel.isHotelType)}" />
+
+            <ImageView
+                android:onClick="@{() -> viewModel.onPlaceTypeHospitalClick()}"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hospital_type_selector"
+                app:imgSelected="@{safeUnbox(viewModel.isHospitalType)}" />
+
+            <ImageView
+                android:onClick="@{() -> viewModel.onPlaceTypeGasStationClick()}"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/gas_station_type_selector"
+                app:imgSelected="@{safeUnbox(viewModel.isGasStationType)}" />
+
+            <ImageView
+                android:onClick="@{() -> viewModel.onPlaceTypeAtmClick()}"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/atm_type_selector"
+                app:imgSelected="@{safeUnbox(viewModel.isAtmType)}" />
+
+            <ImageView
+                android:onClick="@{() -> viewModel.onPlaceTypePoliceClick()}"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/police_type_selector"
+                app:imgSelected="@{safeUnbox(viewModel.isPoliceType)}" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:onClick="@{() -> viewModel.onPlaceInforClick()}"
+            android:background="@android:color/white"
+            android:visibility="@{safeUnbox(viewModel.isVisiblePlaceInfor) ?View.VISIBLE : View.GONE}"
+            android:padding="@dimen/dp_8"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_place"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_100"
+                android:scaleType="fitXY"
+                app:progressBar="@{progressBar}"
+                app:imageUrl="@{viewModel.mCurNearyByPlaces.getPlaceImageUrl()}"
+                />
+
+            <ProgressBar
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_100"
+                android:padding="@dimen/dp_25"
+                android:id="@+id/progressBar"/>
+
+            <TextView
+                android:layout_toRightOf="@+id/img_place"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_18"
+                android:text="@{viewModel.mCurNearyByPlaces.name}"
+                />
+        </RelativeLayout>
+        <TextView
+            android:visibility="@{safeUnbox(viewModel.isLocationTurnOn) ?View.GONE :View.VISIBLE}"
+            android:onClick="@{() -> viewModel.onTurnOnLocationClick()}"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/dp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white_e2e2e9"
+            android:text="You Must Turn On Location"/>
+    </RelativeLayout>
+</layout>

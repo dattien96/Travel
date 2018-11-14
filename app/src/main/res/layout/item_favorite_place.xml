@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.main.favoritefragment.ItemFavoriteViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:onClick="@{()->viewModel.onPlaceClick()}"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_place_save_avatar"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_80"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            app:imageUrl="@{viewModel.placeSave.placeImageUrl}"
+            android:src="@drawable/empty_photo" />
+
+        <LinearLayout
+            android:layout_toLeftOf="@id/img_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_toRightOf="@+id/img_place_save_avatar"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.placeSave.placeName}"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.placeSave.typeDetails}"
+                android:textColor="@color/pink_FE007E" />
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.placeSave.stringViewOfPlace()}" />
+
+                <com.fuzzproductions.ratingbar.RatingBar
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:emptyDrawable="@drawable/topic5_star_empty"
+                    app:filledDrawable="@drawable/topic5_star_full_pink"
+                    app:isIndicator="true"
+                    app:minAllowedStars="0"
+                    app:numStars="5"
+                    app:rating="@{viewModel.placeSave.placeRate}"
+                    app:starMargin="5dp"
+                    app:starSize="@dimen/dp_15" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:onClick="@{()->viewModel.onShowPopupMenu()}"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dp_10"
+            android:id="@+id/img_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/more_ic"/>
+    </RelativeLayout>
+</layout>

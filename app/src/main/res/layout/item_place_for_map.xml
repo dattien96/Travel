@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.common.ItemPlaceMapViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.onPlaceItemClick()}"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_5">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:elevation="@dimen/dp_5"
+            app:cardCornerRadius="@dimen/dp_3">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/empty_photo"
+                app:progressBar="@{progressBar}"
+                app:imageUrl="@{viewModel.place.placeImageUrl}" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp_20"/>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="@{viewModel.place.placeName}"
+            android:textSize="@dimen/sp_12"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.place.stringViewOfPlace()}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/sp_12" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.place.typeDetails}"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+</layout>
+
+

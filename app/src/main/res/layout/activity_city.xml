@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.dattienbkhn.travel.screen.cityForecast.CityActivity">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.city.CityViewModel"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_15">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/img_city_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.onBackClick()}"
+                android:src="@drawable/back_pink"/>
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_toRightOf="@id/img_city_back"
+                android:layout_toLeftOf="@+id/img_city_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/sp_20"
+                android:textStyle="bold"
+                android:text="@{viewModel.currenCity.cityName}"/>
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/img_city_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/s_search_ic"
+                android:onClick="@{() -> viewModel.onSearchClick()}"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_3"
+            android:background="@color/white_e2e2e9"/>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tlCity"
+            app:tabGravity="fill"
+            app:viewPager="@{vpCity}"
+            app:tabTextColor="@android:color/darker_gray"
+            app:tabSelectedTextColor="@color/pink_FE007E"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vpCity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_5"
+            app:vpCurrentTab="@{safeUnbox(viewModel.currentTab)}"
+            app:viewPagerAdater="@{viewModel.adapter}"></android.support.v4.view.ViewPager>
+    </LinearLayout>
+</layout>

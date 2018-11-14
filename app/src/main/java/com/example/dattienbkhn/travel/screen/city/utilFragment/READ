@@ -1,0 +1,11 @@
+this is package code for tab 3 of city viewpager
+
+Our purpose is show UtilFrg
+But this frg need permission location
+
+--> We use 1 frg named ContainFrg
+--> ContainFrg has function is check per
+
+If per grand we will attach UtilFrg into layout of ContainFrg <replace view>
+
+If per denied we not replace frg and use layout of ContainFrg to show noti to user

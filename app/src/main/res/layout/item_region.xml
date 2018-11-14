@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.search.ItemRegionViewModel" />
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:onClick="@{() -> viewModel.onRegionClick()}"
+        android:padding="@dimen/dp_8"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_120">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:imageResource="@{viewModel.region.regionImageRes}"
+            android:src="@drawable/america" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@{viewModel.region.regionName}"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_18" />
+
+        <View
+            android:visibility="@{safeUnbox(viewModel.isSelected) ?View.VISIBLE :View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black_8110533"/>
+    </RelativeLayout>
+</layout>

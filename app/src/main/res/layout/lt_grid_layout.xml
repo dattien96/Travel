@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+
+    >
+
+    <RelativeLayout
+        android:id="@+id/ltContainOfImageCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp">
+
+        <ImageView
+            android:id="@+id/itemGridImg"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/layoutBgOfImage"
+        android:padding="25dp"
+        android:layout_width="83dp"
+        android:layout_height="83dp">
+        <ImageView
+            android:src="@drawable/tick"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY" />
+    </RelativeLayout>
+</RelativeLayout>

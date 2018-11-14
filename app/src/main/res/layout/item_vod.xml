@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.vod.ItemVodViewModel" />
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_200"
+        android:onClick="@{() -> viewModel.onVodClick()}"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/dp_15">
+
+        <ImageView
+            android:id="@+id/img_thumbnails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/no_image" />
+
+        <TextView
+            android:background="@drawable/shape_vod_title"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:textColor="@android:color/white"
+            android:text="@{viewModel.vodNameFormat}"
+            android:textSize="@dimen/sp_15" />
+
+        <ImageView
+            android:visibility="@{safeUnbox(viewModel.isLoadThumbnails) ?View.GONE :View.VISIBLE}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/play_button"/>
+
+        <ProgressBar
+            android:visibility="@{safeUnbox(viewModel.isLoadThumbnails) ?View.VISIBLE :View.GONE}"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</layout>

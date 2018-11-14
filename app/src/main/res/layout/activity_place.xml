@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.detailsplace.PlaceViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_250"
+                android:background="@drawable/empty_photo">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/bannerViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:slidePagerAdapter="@{viewModel.imageAdapter}"></android.support.v4.view.ViewPager>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:onClick="@{() -> viewModel.onBackClick()}"
+                    android:src="@drawable/back_pink" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:orientation="horizontal"
+                    android:text="@{viewModel.mPosCurSlideTab}"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/sp_18" />
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.currentPlace.placeName}"
+                    android:textSize="@dimen/sp_25"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.currentPlace.typeDetails}"
+                    android:textColor="@color/pink_FE007E"
+                    android:textSize="@dimen/sp_18" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_2"
+                android:layout_marginTop="@dimen/dp_15"
+                android:background="@color/white_e2e2e9" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_8">
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onLovesClick()}"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_place_favorite"
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_30"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_marginRight="@dimen/dp_10"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/favorite_place_selector"
+                        app:imgSelected="@{safeUnbox(viewModel.isPlaceLoves)}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="@string/love" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onReviewsClick()}"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_30"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/lb_no_review_pink" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="@string/review" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onSaveClick()}"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_30"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/save_place_selector"
+                        app:imgSelected="@{safeUnbox(viewModel.isPlaceSave)}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="@string/save_place" />
+                </LinearLayout>
+
+                <!--<LinearLayout
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onShareClick()}"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_30"
+                        android:layout_height="@dimen/dp_30"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/topic_share_ic_pink" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="@string/share" />
+                </LinearLayout>-->
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_2"
+                android:background="@color/white_e2e2e9" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="@{safeUnbox(viewModel.isHasInforHotelClass)? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.currenPlaceInfor.hotelClass}"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" - "
+                    android:textSize="@dimen/sp_18" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.currenPlaceInfor.hotelCost}"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@string/address"
+                android:textColor="@android:color/darker_gray"
+                android:visibility="@{safeUnbox(viewModel.isHasInforName)? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:id="@+id/dkm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:text="@{viewModel.currenPlaceInfor.name}"
+                android:visibility="@{safeUnbox(viewModel.isHasInforName)? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@string/phone"
+                android:textColor="@android:color/darker_gray"
+                android:visibility="@{safeUnbox(viewModel.isHasInforPhone)? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:text="@{viewModel.currenPlaceInfor.phone}"
+                android:visibility="@{safeUnbox(viewModel.isHasInforPhone)? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@string/open_hour"
+                android:textColor="@android:color/darker_gray"
+                android:visibility="@{safeUnbox(viewModel.isHasInforOpenHour)? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:text="@{viewModel.currenPlaceInfor.openHour}"
+                android:visibility="@{safeUnbox(viewModel.isHasInforOpenHour)? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@string/attraction"
+                android:textColor="@android:color/darker_gray"
+                android:visibility="@{safeUnbox(viewModel.isHasInforAttraction)? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:text="@{viewModel.currenPlaceInfor.attractionType}"
+                android:visibility="@{safeUnbox(viewModel.isHasInforAttraction)? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@string/cuisine"
+                android:textColor="@android:color/darker_gray"
+                android:visibility="@{safeUnbox(viewModel.isHasInforCuisine)? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:text="@{viewModel.currenPlaceInfor.cuisine}"
+                android:visibility="@{safeUnbox(viewModel.isHasInforCuisine)? View.VISIBLE : View.GONE}" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/shape_radius"
+                android:padding="@dimen/dp_15"
+                android:text="@{viewModel.currenPlaceInfor.description}"
+                android:visibility="@{safeUnbox(viewModel.isHasInforDes)? View.VISIBLE : View.GONE}" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_200">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_200"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:adjustViewBounds="true"
+                    android:onClick="@{() -> viewModel.onMapClick()}"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/fy_no_data_bg"
+                    app:imageUrl="@{viewModel.currentPlace.placeImageMapUrl}"
+                    app:progressBar="@{progressBar}" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dp_50" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/shape_radius"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/rate_place"
+                    android:textSize="@dimen/sp_13"
+                    app:customFont='@{"Roboto-Regular.ttf"}' />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginTop="@dimen/dp_10">
+
+                    <com.fuzzproductions.ratingbar.RatingBar
+                        android:id="@+id/rateBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        app:emptyDrawable="@drawable/topic5_star_empty"
+                        app:filledDrawable="@drawable/topic5_star_full_pink"
+                        app:isIndicator="false"
+                        app:minAllowedStars="0"
+                        app:numStars="5"
+                        app:rating="@{safeUnbox(viewModel.mCurRateOfUser)}"
+                        app:starMargin="8dp"
+                        app:starSize="@dimen/dp_25" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="@{() -> viewModel.onRateClick()}"
+                        android:visibility="@{safeUnbox(viewModel.isLogin)? View.GONE : View.VISIBLE}" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:layoutManager="LinearLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:recyclerAdapter="@{viewModel.commentAdapter}"
+                app:scroll="@{false}"></android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:onClick="@{() -> viewModel.onViewMoreCmtClick()}"
+                android:visibility="@{safeUnbox(viewModel.isViewMoreComment) ?View.VISIBLE :View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_e2e2e9"
+                android:gravity="center"
+                android:padding="@dimen/dp_5"
+                android:text="@string/more_cmt"
+                android:textColor="@color/pink_FE007E"
+                android:textSize="@dimen/sp_15" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</layout>
+

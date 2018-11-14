@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.comment.CommentViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/toolbarContain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_15">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.onbackClick()}"
+                android:src="@drawable/back_pink" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:gravity="center_vertical"
+                android:text="@{viewModel.place.placeName}"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_div"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_below="@+id/toolbarContain"
+            android:background="@color/white_e2e2e9" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rc_review"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/txt_write_cmt"
+            android:layout_below="@+id/view_div"
+            android:padding="10dp"
+            app:layoutManager="LinearLayoutManager"
+            app:reverseLayout="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:recyclerAdapter="@{viewModel.commentAdapter}"></android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/txt_write_cmt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.onWriteCmtClick()}"
+            android:padding="@dimen/dp_10"
+            android:text="@string/write_review"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_18" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:background="@drawable/shape_light_border_has_bg"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_10"
+            android:visibility="@{safeUnbox(viewModel.isSendReview) ?View.VISIBLE :View.GONE}">
+
+            <EditText
+                android:id="@+id/ed_review"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:inputType="text|textMultiLine" />
+
+            <LinearLayout
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/shape_search"
+                    android:onClick="@{() -> viewModel.onSendReviewClick()}"
+                    android:paddingBottom="@dimen/dp_8"
+                    android:paddingTop="@dimen/dp_8"
+                    android:text="@string/send"
+                    android:textSize="@dimen/sp_15" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/dp_40"
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/shape_search"
+                    android:onClick="@{() -> viewModel.onCancelSendClick()}"
+                    android:paddingBottom="@dimen/dp_8"
+                    android:paddingTop="@dimen/dp_8"
+                    android:text="@string/cancel"
+                    android:textSize="@dimen/sp_15" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

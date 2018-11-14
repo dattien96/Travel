@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.vod.VodViewModel" />
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/toolbarContain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_15">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.onBackClick()}"
+                android:src="@drawable/back_pink" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:gravity="center_vertical"
+                android:text="@{viewModel.mCurName}"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:visibility="@{safeUnbox(viewModel.isHasData) ?View.GONE :View.VISIBLE}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/pink_FE007E"
+            android:textSize="@dimen/sp_18"
+            android:text="No videos"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@id/toolbarContain"
+            android:visibility="@{safeUnbox(viewModel.isHasData) ?View.VISIBLE :View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:recyclerAdapter="@{viewModel.vodAdapter}"></android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+</layout>

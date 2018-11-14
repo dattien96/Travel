@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.city.homeFragment.ItemFamousPlaceCityViewHolder" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_250"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.onPlaceItemClick()}"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_8">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_120"
+            android:elevation="@dimen/dp_8"
+            app:cardCornerRadius="@dimen/dp_7">
+
+            <ImageView
+                android:id="@+id/item_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/empty_photo"
+                app:progressBar="@{progressBar}"
+                app:imageUrl="@{viewModel.place.placeImageUrl}" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp_30"/>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="@{viewModel.place.placeName}"
+            android:textSize="@dimen/sp_15" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_5"
+            android:orientation="horizontal">
+
+            <com.fuzzproductions.ratingbar.RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:emptyDrawable="@drawable/topic5_star_empty"
+                app:filledDrawable="@drawable/topic5_star_full_pink"
+                app:isIndicator="true"
+                app:minAllowedStars="0"
+                app:numStars="5"
+                app:rating="@{viewModel.place.placeRate}"
+                app:starMargin="10dp"
+                app:starSize="@dimen/dp_15" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@{viewModel.place.stringViewOfPlace()}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.place.typeDetails}"
+            android:textColor="@color/pink_FE007E"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+</layout>

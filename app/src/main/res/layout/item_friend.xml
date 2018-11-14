@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.dattienbkhn.travel.screen.main.mefragment.ItemFriendViewModel" />
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:onClick="@{() -> viewModel.onFriendItemClick()}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_user_avatar"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_centerVertical="true"
+            android:src="@drawable/no_image"
+            app:civ_border_color="@android:color/white"
+            app:civ_border_width="@dimen/dp_2" />
+
+        <TextView
+            android:layout_toRightOf="@id/img_user_avatar"
+            android:layout_toLeftOf="@+id/img_noti"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.user.name}"
+            android:textSize="@dimen/sp_15"/>
+
+        <ImageView
+            android:visibility="@{safeUnbox(viewModel.isStream) ?View.VISIBLE :View.GONE}"
+            android:id="@+id/img_noti"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/online"/>
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#FE007E</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="white_tranfe">#8be7e8ea</color>
+    <color name="white_e2e2e9">#e2e2e9</color>
+    <color name="white_vod_title">#8c9b9b9f</color>
+    <color name="white_efeff9">#efeff9</color>
+    <color name="pink_FE007E">#FE007E</color>
+    <color name="blue_FE007E">#5270f4</color>
+    <color name="black_353536">#3e3e40</color>
+    <color name="black_8110533">#c7464548</color>
+    <color name="black_811">#dc59595b</color>
+    <color name="gray_777777">#777777</color>
+    <color name="blue_3d4d99">#3D4D99</color>
+    <color name="road_direct_color">#d8217bac</color>
+</resources>
